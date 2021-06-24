@@ -1,6 +1,4 @@
-Public template
-Test: tests/my_test.py
-Code: src/my_code.py
-
-Issues: 
-flake8 error with style issues
+Working new public template
+- things to test
+  - keep both style checkers from running (maybe when private?
+  - modify messages 
