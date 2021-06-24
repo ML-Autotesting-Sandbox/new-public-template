@@ -3,7 +3,7 @@ name: Build and Test
 on:
   push:
     paths: 
-      - 'src/exercise.py'
+      - 'src/my_code.py'
 
 jobs:
       
@@ -17,9 +17,9 @@ jobs:
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip install -r requirements.txt   
+        pip install -r requirements.txt
     - name: Test student program
-      run: python3 -m pytest >> .github/ISSUE_TEMPLATE/test-failure.md
+      run: python3 -m pytest tests/my_test.py >> .github/ISSUE_TEMPLATE/test-failure.md
     - name: Failure message
       if: failure()
       uses: machine-learning-apps/pr-comment@1.0.0
@@ -31,7 +31,8 @@ jobs:
       run: flake8 src/my_code.py
     - name: Success message
       uses: machine-learning-apps/pr-comment@1.0.0
-      env: 
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
         path: .github/ISSUE_TEMPLATE/test-success.md
+
